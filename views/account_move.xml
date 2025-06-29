@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="add_driver_in_account_move_form_view" model="ir.ui.view">
+        <field name="name">account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@id='header_left_group']" position="inside">
+                        <field name="driver_name"/>
+                        <field name="car_number"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_car_number_in_invoice_form" model="ir.ui.view">
+    <field name="name">Add.Car.Number.Invoice.Form</field>
+    <field name="model">account.move</field>
+    <field name="inherit_id" ref="account.view_move_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//sheet/group" position="inside">
+            <field name="car_number"/>
+            <field name="driver_name"/>
+        </xpath>
+    </field>
+</record>
+
+    <record id="add_driver_in_invoice_list_view" model="ir.ui.view">
+        <field name="name">add.driver.in.invoice.list</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="driver_name"/>
+                <field name="car_number"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

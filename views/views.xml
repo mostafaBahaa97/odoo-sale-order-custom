@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+
+
+
+  <record id="action_sale_order_form" model="ir.actions.act_window">
+    <field name="name">Sales Orders</field>
+    <field name="res_model">sale.order</field>
+    <field name="view_mode">list,form</field>
+</record>
+
+  <record id="add_driver_in_sale_order_form_view" model="ir.ui.view">
+    <field name="name">Add.Driver.sale.order</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//group[@name='order_details']" position="inside">
+        <field name="driver_name" />
+        <field name="car_number" />
+      </xpath>
+
+      <!-- <xpath expr="//field[@name='payment_term_id']" position="after">
+        <field name="driver_name" />
+        <field name="car_number" />
+      </xpath> -->
+      <!-- <xpath expr="//group[@name='order_details']/field[@name='payment_term_id']" position="after">
+        
+      </xpath> -->
+
+      <xpath expr="//list/field[@name='product_template_id']" position="after">
+        <field name="brand"/>
+      </xpath>
+
+      <xpath expr="//list/field[@name='price_unit']" position="attributes">
+        <attribute name="groups">edit_in_system.acess_so_price_unit</attribute>
+      </xpath>
+     
+    </field>
+  </record>
+
+  <record id="add_driver_in_so_list_view" model="ir.ui.view">
+    <field name="name">add.driver.in.so.list</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.sale_order_tree"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='partner_id']" position="after">
+        <field name="driver_name" />
+        <field name="car_number" />
+      </xpath>
+    </field>
+  </record>
+
+   <menuitem id="menu_product_brand_root"
+            name="Product Management"
+            sequence="1000"/>
+
+  <menuitem id="menu_product_brand"
+            name="Brands"
+            parent="menu_product_brand_root"
+            action="action_product_brand"
+            sequence="10"/>
+<menuitem id="menu_root" name="Sales Edit" sequence="1"/>
+<menuitem id="menu_sales_orders" name="Sales Orders" parent="menu_root" action="action_sale_order_form"/>
+
+  <!-- <record id="sale.action_quotations_with_onboarding" model="ir.actions.act_window">
+      <field name="domain">[]</field>
+  </record> -->
+  
+</odoo>

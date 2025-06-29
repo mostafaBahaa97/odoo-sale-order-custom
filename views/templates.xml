@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+  <template id="add_driver_to_so_pdf" name="Add Driver" inherit_id="sale.report_saleorder_document">
+    <xpath expr="//div[@t-if='doc.user_id.name']" position="after">
+      <div t-if="doc.driver_name" class="col">
+          <strong>Driver</strong>
+          <div t-field="doc.driver_name"/>
+      </div> 
+      <div t-if="doc.car_number" class="col">
+          <strong>Car Number</strong>
+          <div t-field="doc.car_number"/>
+      </div>
+    </xpath>
+
+    <!-- <xpath expr="//div[@id='informations']/div[4]" position="after">
+</xpath> -->
+  </template>
+</odoo>

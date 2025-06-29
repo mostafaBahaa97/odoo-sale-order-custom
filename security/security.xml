@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    
+    <record id="acess_so_price_unit" model="res.groups">
+        <field name="name">Access SO Price Unit</field>
+    </record>
+
+    <record id="group_sales_manager_advanced" model="res.groups">
+      <field name="name">Sales Manager Advanced</field>
+      <field name="category_id" ref="base.module_category_sales"/>
+    </record>
+    
+</odoo>
